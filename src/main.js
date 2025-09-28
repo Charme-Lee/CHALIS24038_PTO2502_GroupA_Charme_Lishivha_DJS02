@@ -67,3 +67,14 @@ const filterAndSortPodcasts = () => {
   // Sort and render podcasts
   podcastGrid.render(sortPodcasts(filteredPodcasts, sortBy));
 };
+
+// --- Event Listeners & Initialization ---
+document.addEventListener("DOMContentLoaded", () => {
+  if (genresDropdown)
+    genresDropdown.addEventListener("change", filterAndSortPodcasts);
+  if (sortDropdown)
+    sortDropdown.addEventListener("change", filterAndSortPodcasts);
+
+  populateGenresDropdown();
+  filterAndSortPodcasts();
+});
