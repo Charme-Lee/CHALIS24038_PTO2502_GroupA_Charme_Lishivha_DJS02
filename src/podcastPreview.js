@@ -133,6 +133,24 @@ class PodcastPreview extends HTMLElement {
           cursor: pointer;
         }
 
+
+        .podcast-details-top {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .seasons-count {
+          font-size: 0.85rem;
+          color: var(--light-text-color, #666);
+          margin-bottom: 4px;
+          display: flex;
+          align-items: center;
+        }
+
+        .seasons-icon {
+          font-size: 16px;
+          margin-right: 4px;
+        }
         .podcast-card {
           background: var(--card-bg-color, #fff);
           border-radius: 8px;
@@ -141,6 +159,9 @@ class PodcastPreview extends HTMLElement {
           display: flex;
           flex-direction: column;
           overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
         }
 
         .podcast-card:hover {
@@ -165,23 +186,6 @@ class PodcastPreview extends HTMLElement {
           color: var(--primary-color, #0077cc);
         }
 
-        .podcast-details-top {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .seasons-count {
-          font-size: 0.85rem;
-          color: var(--light-text-color, #666);
-          margin-bottom: 4px;
-          display: flex;
-          align-items: center;
-        }
-
-        .seasons-icon {
-          font-size: 16px;
-          margin-right: 4px;
-        }
 
         .genre-tags {
           display: flex;

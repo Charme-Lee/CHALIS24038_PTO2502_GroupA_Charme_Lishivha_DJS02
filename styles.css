@@ -1,14 +1,14 @@
 /* Global Styles & CSS Reset */
 :root {
-  --primary-color: #3498db; /* Blue for main accents */
-  --secondary-color: #2c3e50; /* Dark text/header color */
-  --background-color: #ecf0f1; /* Light gray body background */
-  --card-bg-color: #ffffff; /* White card background */
-  --text-color: #333333; /* Standard body text color */
-  --light-text-color: #7f8c8d; /* Muted text (dates, seasons) */
+  --light-text-color: #7f8c8d;
   --border-color: #bdc3c7;
-  --shadow-light: rgba(0, 0, 0, 0.1);
-  --accent-color: #3498db;
+  --shadow-light: rgba(13, 13, 13, 0.1);
+  --accent-color: #606161;
+  --primary-color: #505254;
+  --secondary-color: #2c3e50;
+  --background-color: #dcdcdc;
+  --card-bg-color: #ffffff;
+  --text-color: #333333;
 }
 
 * {
@@ -23,7 +23,7 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   padding: 20px;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -42,19 +42,30 @@ body {
   align-items: center;
   gap: 10px;
 }
-
-.podcast-icon {
-  font-size: 32px;
-  color: var(--secondary-color);
-}
-
-.app-title {
+/* .app-title {
   font-size: 2rem;
   font-weight: bold;
   color: var(--secondary-color);
+} */
+
+.app-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  /* font-weight: bold; */
+  gap: 8px; /* space between icon and text */
 }
 
-/* Filter Bar Styles (Dropdowns are horizontal on desktop) */
+.app-title img {
+  display: flex;
+  align-items: center;
+  height: 30%;
+  width: 10%;
+  /* font-size: 1.5rem; */
+  /* font-weight: bold; */
+  gap: 8px; /* space between icon and text */
+}
+
 .filter-bar {
   display: flex;
   align-items: center;
@@ -66,11 +77,15 @@ body {
 
 .filter-bar p {
   font-weight: 500;
-  /* On desktop, the "Filter by:" label is inline */
 }
 
 .dropdown-container {
   flex-shrink: 0;
+}
+
+.podcast-icon {
+  font-size: 32px;
+  color: var(--secondary-color);
 }
 
 .dropdown-container select {
@@ -87,27 +102,15 @@ body {
 .podcast-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
+  gap: 40px;
   grid-auto-rows: minmax(min-content, max-content);
 }
 
 /* Ensure the custom element adheres to the grid slot */
 podcast-preview {
   width: 100%;
-}
-
-/* Modal Styles (For details view) */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+  padding-top: 10px;
+  background-color: white;
 }
 
 .modal.hidden {
@@ -136,6 +139,20 @@ podcast-preview {
 .modal-header h2 {
   font-size: 2rem;
   font-weight: bold;
+}
+
+/* Modal Styles (For details view) */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .modal-close-btn {
@@ -221,9 +238,8 @@ podcast-preview {
   color: var(--light-text-color);
 }
 
-/* --- Media Queries for Mobile Responsiveness (Screen width <= 768px) --- */
+/* --- Media Queries for Mobile Responsiveness--- */
 @media (max-width: 768px) {
-  /* Adjust body padding for true mobile width */
   body {
     padding: 10px;
   }
@@ -231,19 +247,12 @@ podcast-preview {
     font-size: 1.8rem;
   }
 
-  /* 1. Filter Bar Layout: Label on top, Dropdowns side-by-side */
   .filter-bar {
     flex-direction: row; /* Keep elements in a row */
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
-  }
-
-  .filter-bar p {
-    width: 100%; /* Forces label to take full width and stack */
-    margin-bottom: 0;
-    font-weight: 600;
   }
 
   .dropdown-container {
@@ -256,7 +265,6 @@ podcast-preview {
     width: 100%;
   }
 
-  /* 2. Podcast Grid: Single column, full width cards */
   .podcast-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -264,9 +272,17 @@ podcast-preview {
 
   podcast-preview {
     width: 100%;
+    padding-top: 10px;
+    background-color: white;
+    /* padding: 15px; */
   }
 
-  /* 3. Modal adjustments */
+  .filter-bar p {
+    width: 100%;
+    margin-bottom: 0;
+    font-weight: 600;
+  }
+
   .main-details-section {
     flex-direction: column;
   }
