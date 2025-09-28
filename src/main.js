@@ -35,17 +35,17 @@ const sortPodcasts = (list, sortBy) => {
   const sortedList = [...list];
 
   const sortMethods = {
-    "updated-desc": (a, b) => new Date(b.updated) - new Date(a.updated),
-    "newest-desc": (a, b) =>
+    "updated-filter": (a, b) => new Date(b.updated) - new Date(a.updated),
+    "newest-filter": (a, b) =>
       new Date(b.releaseDate || b.updated) -
       new Date(a.releaseDate || a.updated),
-    "popular-desc": (a, b) =>
+    "popular-filter": (a, b) =>
       (b.seasons?.length || 0) - (a.seasons?.length || 0) ||
       a.title.localeCompare(b.title),
     "title-asc": (a, b) => a.title.localeCompare(b.title),
   };
 
-  return sortedList.sort(sortMethods[sortBy] || sortMethods["updated-desc"]);
+  return sortedList.sort(sortMethods[sortBy] || sortMethods["updated-filter"]);
 };
 
 /**
@@ -53,7 +53,7 @@ const sortPodcasts = (list, sortBy) => {
  */
 const filterAndSortPodcasts = () => {
   const selectedGenreId = genresDropdown?.value || "all";
-  const sortBy = sortDropdown?.value || "updated-desc";
+  const sortBy = sortDropdown?.value || "updated-filter";
 
   let filteredPodcasts = [...podcasts];
 
