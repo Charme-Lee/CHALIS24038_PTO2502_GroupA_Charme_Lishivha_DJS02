@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <!-- Meta & Page Setup -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PodcastApp</title>
-    
+
     <!-- Google Material Symbols (for icons like "podcasts") -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
 
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="styles.css"> 
-</head>
-<body>
-
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <!-- ========== HEADER ========== -->
     <header class="podcast-header">
-        <div class="header-logo">
-            <!-- Podcast icon from Google Material Symbols -->
-            <span class="material-symbols-outlined icon podcast-icon">podcasts</span>
-            <!-- App title -->
-            <h1 class="app-title">PodcastApp</h1>
-        </div>
+      <div class="header-logo">
+        <!-- Podcast icon from Google Material Symbols -->
+        <span class="material-symbols-outlined icon podcast-icon"
+          >podcasts</span
+        >
+        <!-- App title -->
+        <h1 class="app-title">PodcastApp</h1>
+      </div>
     </header>
 
     <!-- ========== FILTER BAR ========== -->
     <section class="filter-bar">
-        <p>Filter by:</p>
+      <p>Filter by:</p>
 
-        <!-- Dropdown for selecting podcast genres -->
-        <div class="dropdown-container">
-            <select id="genres-dropdown" name="genres">
-                <option value="all">All Genres</option>
-            </select>
-        </div>
+      <!-- Dropdown for selecting podcast genres -->
+      <div class="dropdown-container">
+        <select id="genres-dropdown" name="genres">
+          <option value="all">All Genres</option>
+        </select>
+      </div>
 
-        <!-- Dropdown for sorting podcasts -->
-        <div class="dropdown-container">
-            <select id="sort-dropdown" name="sort">
-                <option value="updated-filter">Recently Updated</option>
-                <option value="popular-filter">Most Popular</option>
-                <option value="newest-filter">Newest</option>
-            </select>
-        </div>
+      <!-- Dropdown for sorting podcasts -->
+      <div class="dropdown-container">
+        <select id="sort-dropdown" name="sort">
+          <option value="updated-desc">Recently Updated</option>
+          <option value="popular-desc">Most Popular</option>
+          <option value="newest-desc">Newest</option>
+          <option value="title-asc">Title A-Z</option>
+        </select>
+      </div>
     </section>
 
     <!-- ========== PODCAST GRID ========== -->
@@ -51,4 +56,42 @@
 
     <!-- ========== PODCAST DETAIL MODAL ========== -->
     <!-- Initially hidden; becomes visible when a user clicks a podcast card -->
-    <div id="podcast-modal" class="mo
+    <div id="podcast-modal" class="modal hidden">
+      <div class="modal-content">
+        <!-- Modal Header with Title and Close Button -->
+        <div class="modal-header">
+          <h2 id="modal-title"></h2>
+          <button id="modal-close-btn" class="modal-close-btn">X</button>
+        </div>
+
+        <!-- Modal Body with Podcast Details -->
+        <div class="modal-body">
+          <!-- Main Info: Cover image, description, genres, updated date -->
+          <div class="main-details-section">
+            <img
+              id="modal-image"
+              src=""
+              alt="Podcast Cover"
+              class="modal-image"
+            />
+            <div class="details-text-container">
+              <p id="modal-description" class="modal-description"></p>
+              <div id="modal-genres" class="modal-genres"></div>
+              <p id="modal-updated" class="modal-updated"></p>
+            </div>
+          </div>
+
+          <!-- List of Seasons (populated dynamically) -->
+          <div class="seasons-list-section">
+            <h3>Seasons</h3>
+            <ul id="modal-seasons-list" class="modal-seasons-list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <!-- Main logic file (handles fetching, rendering, filtering, modal interactions) -->
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
