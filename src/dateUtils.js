@@ -44,25 +44,24 @@ export const DateUtils = {
     const d = new Date(dateString);
     if (isNaN(d)) return "Invalid Date";
 
-    const diff = (Date.now() - d) / 1000; // seconds difference
-    const units = [
-      { s: 60, name: "second" },
-      { s: 60, name: "minute" },
-      { s: 24, name: "hour" },
-      { s: 30, name: "day" },
-      { s: 12, name: "month" },
+    const seconds = Math.floor((Date.now() - d.getTime()) / 1000);
+
+    const intervals = [
+      { label: "year", seconds: 31536000 }, // 365 * 24 * 60 * 60
+      { label: "month", seconds: 2592000 }, // 30 * 24 * 60 * 60
+      { label: "day", seconds: 86400 }, // 24 * 60 * 60
+      { label: "hour", seconds: 3600 },
+      { label: "minute", seconds: 60 },
+      { label: "second", seconds: 1 },
     ];
 
-    let interval = diff;
-    let unit = "year";
-
-    for (const u of units) {
-      if (interval < u.s) break;
-      interval /= u.s;
-      unit = u.name;
+    for (const { label, seconds: s } of intervals) {
+      const count = Math.floor(seconds / s);
+      if (count >= 1) {
+        return `${count} ${label}${count > 1 ? "s" : ""} ago`;
+      }
     }
 
-    const n = Math.floor(interval);
-    return n <= 0 ? "just now" : `${n} ${unit}${n > 1 ? "s" : ""} ago`;
+    return "just now";
   },
 };
