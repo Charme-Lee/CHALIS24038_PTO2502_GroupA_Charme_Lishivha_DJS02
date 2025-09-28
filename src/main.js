@@ -42,7 +42,6 @@ const sortPodcasts = (list, sortBy) => {
     "popular-filter": (a, b) =>
       (b.seasons?.length || 0) - (a.seasons?.length || 0) ||
       a.title.localeCompare(b.title),
-    "title-asc": (a, b) => a.title.localeCompare(b.title),
   };
 
   return sortedList.sort(sortMethods[sortBy] || sortMethods["updated-filter"]);
