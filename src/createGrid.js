@@ -1,5 +1,5 @@
 // createGrid.js
-import { createModal } from "./CreateModal.js";
+import { createModal } from "./createModal.js";
 import { podcasts } from "./data.js";
 
 /**

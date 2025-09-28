@@ -1,6 +1,6 @@
 // createModal.js
-import { DateUtils } from "./DateUtils.js";
-import { GenreService } from "./GenreService.js";
+import { DateUtils } from "./dateUtils.js";
+import { GenreService } from "./genreService.js";
 import { seasons } from "./data.js";
 
 /**
