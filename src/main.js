@@ -1,6 +1,6 @@
 import { podcasts, genres } from "./data.js";
 import { createGrid } from "./createGrid.js";
-import "./PodcastPreview.js";
+import "./podcastPreview.js";
 
 // --- DOM Element Caching ---
 const genresDropdown = document.getElementById("genres-dropdown");
